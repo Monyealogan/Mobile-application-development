@@ -20,7 +20,7 @@
         <activity
             android:name=".UI.VacationDetails"
             android:exported="false"
-            android:label="Vacation Details"
+            android:label="Vacation Details and Excursion List"
             android:parentActivityName=".UI.VacationList" />
         <activity
             android:name=".UI.VacationList"
