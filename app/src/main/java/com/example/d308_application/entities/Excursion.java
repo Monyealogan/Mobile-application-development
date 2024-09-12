@@ -11,7 +11,7 @@ public class Excursion {
     private double price;
     private int vacationID;
 
-    public Excursion(int excursionID, String excursionName, double price, int vacationID) {
+    public Excursion(int excursionID, String excursionName, double price, int vacationID, String string) {
         this.excursionID = excursionID;
         this.excursionName = excursionName;
         this.price = price;

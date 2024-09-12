@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +17,7 @@ import com.example.d308_application.entities.Excursion;
 import com.example.d308_application.entities.Vacation;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.BreakIterator;
 import java.util.List;
 
 public class VacationList extends AppCompatActivity {
@@ -72,9 +72,10 @@ public class VacationList extends AppCompatActivity {
             repository.insert(vacation);
             vacation = new Vacation(0,"London", 600.0);
             repository.insert(vacation);
-            Excursion excursion = new Excursion(0, "Snorkeling", 200.0, 1);
+            BreakIterator editDate = null;
+            Excursion excursion = new Excursion(0, "Snorkeling", 200.0, 1, editDate.getText().toString());
             repository.insert(excursion);
-            excursion = new Excursion(0, "Boat Tour", 400.0, 1);
+            excursion = new Excursion(0, "Boat Tour", 400.0, 1, editDate.getText().toString());
             repository.insert(excursion);
             return true;
         }
