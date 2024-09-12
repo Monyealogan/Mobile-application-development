@@ -10,10 +10,14 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.d308_application.Database.Repository;
 import com.example.d308_application.R;
+import com.example.d308_application.entities.Excursion;
+import com.example.d308_application.entities.Vacation;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class VacationList extends AppCompatActivity {
+    private Repository repository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +28,7 @@ public class VacationList extends AppCompatActivity {
             //Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             //v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             //return insets;
-        FloatingActionButton fab=findViewById(R.id.floatingActionButton2);
+        FloatingActionButton fab=findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,8 +45,17 @@ public class VacationList extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
+        repository=new Repository(getApplication());
         if(item.getItemId()==R.id.mysample) {
-            Toast.makeText(VacationList.this,"put in sample data", Toast.LENGTH_LONG).show();
+          //  Toast.makeText(VacationList.this,"put in sample data", Toast.LENGTH_LONG).show();
+            Vacation vacation=new Vacation(0, "Camping vacation", 100.0);
+            repository.insert(vacation);
+            vacation = new Vacation(0,"London", 600.0);
+            repository.insert(vacation);
+            Excursion excursion = new Excursion(0, "Snorkeling", 200.0, 1);
+            repository.insert(excursion);
+            excursion = new Excursion(0, "Boat Tour", 400.0, 1);
+            repository.insert(excursion);
             return true;
         }
         if(item.getItemId()==android.R.id.home){

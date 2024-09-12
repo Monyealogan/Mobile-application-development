@@ -24,7 +24,7 @@ public class VacationDetails extends AppCompatActivity {
             //Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
            // v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             //return insets;
-        FloatingActionButton fab=findViewById(R.id.floatingActionButton2);
+        FloatingActionButton fab=findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
