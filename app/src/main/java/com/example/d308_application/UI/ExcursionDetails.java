@@ -1,9 +1,11 @@
 package com.example.d308_application.UI;
 
 import android.app.AlarmManager;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -72,7 +75,7 @@ public class ExcursionDetails extends AppCompatActivity {
         editNote=findViewById(R.id.excursionnote);
         editDate=findViewById(R.id.excursiondate);
         editDate.setText(excursionDate);
-        String myFormat = "MM/dd/yy"; //In which you need put here
+        String myFormat = "MM/dd/yy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
 
@@ -104,6 +107,7 @@ public class ExcursionDetails extends AppCompatActivity {
 
             }
         });
+
 
 
         startDate = new DatePickerDialog.OnDateSetListener() {
@@ -237,3 +241,4 @@ public class ExcursionDetails extends AppCompatActivity {
     }
 
 }
+
