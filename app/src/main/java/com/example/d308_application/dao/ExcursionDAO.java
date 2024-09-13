@@ -13,7 +13,6 @@ import java.util.List;
 
 @Dao
 public interface ExcursionDAO {
-
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Excursion excursion);
 

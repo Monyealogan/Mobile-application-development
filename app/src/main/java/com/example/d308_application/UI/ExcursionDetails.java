@@ -36,10 +36,11 @@ import java.util.Date;
 import java.util.Locale;
 
 public class ExcursionDetails extends AppCompatActivity {
+
     String title;
     Double price;
     int excursionID;
-    int vacID;
+    int vacaID;
     String startVacationDate;
     String endVacationDate;
     EditText editName;
@@ -52,11 +53,9 @@ public class ExcursionDetails extends AppCompatActivity {
     Date endEndDate = null;
     DatePickerDialog.OnDateSetListener startDate;
     final Calendar myCalendarStart = Calendar.getInstance();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_excursion_details);
         repository=new Repository(getApplication());
         title = getIntent().getStringExtra("name");
@@ -67,18 +66,15 @@ public class ExcursionDetails extends AppCompatActivity {
         editPrice = findViewById(R.id.excursionPrice);
         editPrice.setText(Double.toString(price));
         excursionID = getIntent().getIntExtra("id", -1);
-        vacID = getIntent().getIntExtra("vacationID", -1);
+        vacaID = getIntent().getIntExtra("vacationID", -1);
         startVacationDate = getIntent().getStringExtra("startVacationDate");
         endVacationDate = getIntent().getStringExtra("endVacationDate");
         editNote=findViewById(R.id.excursionnote);
         editDate=findViewById(R.id.excursiondate);
         editDate.setText(excursionDate);
-        String myFormat = "MM/dd/yy";
+        String myFormat = "MM/dd/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-       // ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-           // Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-           // v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            //return insets;
+
 
         ArrayList<Vacation> vacationArrayList= new ArrayList<>();
         vacationArrayList.addAll(repository.getAllVacations());
@@ -89,7 +85,7 @@ public class ExcursionDetails extends AppCompatActivity {
         ArrayAdapter<Integer> vacationIdAdapter= new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_item,vacationIdList);
         Spinner spinner=findViewById(R.id.spinner);
         spinner.setAdapter(vacationIdAdapter);
-        spinner.setSelection(vacID - 1);
+        spinner.setSelection(vacaID - 1);
 
         Log.d("DebugTag", "vacationIdList size: " + vacationIdList.size());
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -97,7 +93,7 @@ public class ExcursionDetails extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Log.d("DebugTag", "Selected position: " + position + ", List size: " + vacationIdList.size());
                 if (position >= 0 && position < vacationIdList.size()) {
-                    vacID = vacationIdList.get(position);
+                    vacaID = vacationIdList.get(position);
                 } else {
                     Log.e("DebugTag", "Invalid position: " + position);
                 }
@@ -145,7 +141,7 @@ public class ExcursionDetails extends AppCompatActivity {
                 // TODO Auto-generated method stub
                 Date date;
                 String info=editDate.getText().toString();
-                if(info.equals(""))info="02/10/24";
+                if(info.equals(""))info="10/11/24";
                 try{
                     myCalendarStart.setTime(sdf.parse(info));
                 } catch (ParseException e) {
@@ -169,7 +165,7 @@ public class ExcursionDetails extends AppCompatActivity {
     }
 
     private void updateLabelStart() {
-        String myFormat = "MM/dd/yy"; //In which you need put here
+        String myFormat = "MM/dd/yy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         editDate.setText(sdf.format(myCalendarStart.getTime()));
@@ -195,11 +191,11 @@ public class ExcursionDetails extends AppCompatActivity {
                     excursionID = 1;
                 else
                     excursionID = repository.getAllExcursions().get(repository.getAllExcursions().size() - 1).getExcursionID() + 1;
-                excursion = new Excursion(excursionID, editName.getText().toString(), Double.parseDouble(editPrice.getText().toString()), vacID, editDate.getText().toString());
+                excursion = new Excursion(excursionID, editName.getText().toString(), Double.parseDouble(editPrice.getText().toString()), vacaID, editDate.getText().toString());
                 repository.insert(excursion);
                 this.finish();
             } else {
-                excursion = new Excursion(excursionID, editName.getText().toString(), Double.parseDouble(editPrice.getText().toString()), vacID, editDate.getText().toString());
+                excursion = new Excursion(excursionID, editName.getText().toString(), Double.parseDouble(editPrice.getText().toString()), vacaID, editDate.getText().toString());
                 repository.update(excursion);
                 this.finish();
             }
@@ -241,4 +237,3 @@ public class ExcursionDetails extends AppCompatActivity {
     }
 
 }
-

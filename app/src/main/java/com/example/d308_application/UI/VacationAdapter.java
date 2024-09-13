@@ -21,59 +21,61 @@ public class VacationAdapter extends RecyclerView.Adapter<VacationAdapter.Vacati
     private final LayoutInflater mInflater;
 
     public VacationAdapter(Context context) {
-        mInflater = LayoutInflater.from(context);
+        mInflater= LayoutInflater.from(context);
         this.context = context;
     }
 
     public class VacationViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView vacationItemView;
-
         public VacationViewHolder(@NonNull View itemView) {
             super(itemView);
-            vacationItemView = itemView.findViewById(R.id.textView2);
+            vacationItemView=itemView.findViewById(R.id.textView2);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    int position = getAdapterPosition();
-                    final Vacation current = mVacations.get(position);
+                    int position=getAdapterPosition();
+                    final Vacation current=mVacations.get(position);
                     Intent intent = new Intent(context, VacationDetails.class);
                     intent.putExtra("id", current.getVacationID());
                     intent.putExtra("name", current.getVacationName());
                     intent.putExtra("price", current.getPrice());
+                    intent.putExtra("hotel", current.getHotel());
+                    intent.putExtra("startVacationDate", current.getStartVacationDate());
+                    intent.putExtra("endVacationDate", current.getEndVacationDate());
                     context.startActivity(intent);
                 }
             });
         }
     }
-
     @NonNull
     @Override
     public VacationAdapter.VacationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = mInflater.inflate(R.layout.vacation_list_item, parent, false);
+        View itemView=mInflater.inflate(R.layout.vacation_list_item,parent,false);
         return new VacationViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull VacationAdapter.VacationViewHolder holder, int position) {
-        if (mVacations != null) {
-            Vacation current = mVacations.get(position);
-            String name = current.getVacationName();
+        if(mVacations!=null){
+            Vacation current=mVacations.get(position);
+            String name= current.getVacationName();
             holder.vacationItemView.setText(name);
-        } else {
+        }
+        else{
             holder.vacationItemView.setText("No vacation name");
         }
     }
 
     @Override
     public int getItemCount() {
-        if (mVacations != null) {
+        if(mVacations != null) {
             return mVacations.size();
-        } else return 0;
+        }
+        else return 0;
     }
-
-    public void setVacations(List<Vacation> vacations) {
-        mVacations = vacations;
+    public void setVacations(List<Vacation> vacations){
+        mVacations=vacations;
         notifyDataSetChanged();
     }
 }

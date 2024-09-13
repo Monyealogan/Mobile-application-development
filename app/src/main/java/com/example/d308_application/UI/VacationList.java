@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import java.time.Instant;
+import java.util.Date;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,16 +24,10 @@ import java.util.List;
 
 public class VacationList extends AppCompatActivity {
     private Repository repository;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_vacation_list);
-        //ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            //Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            //v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            //return insets;
         FloatingActionButton fab=findViewById(R.id.floatingActionButton2);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,13 +43,13 @@ public class VacationList extends AppCompatActivity {
         recyclerView.setAdapter(vacationAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         vacationAdapter.setVacations(allVacations);
-        //System.out.println(getIntent().getStringExtra("test"));
+//        System.out.println(getIntent().getStringExtra("test"));
     }
-
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_vacation_list, menu);
         return true;
     }
+
     protected void onResume() {
         super.onResume();
         List<Vacation> allVacations = repository.getAllVacations();
@@ -64,18 +60,18 @@ public class VacationList extends AppCompatActivity {
         vacationAdapter.setVacations(allVacations);
     }
 
+
     public boolean onOptionsItemSelected(MenuItem item) {
         repository=new Repository(getApplication());
-        if(item.getItemId()==R.id.mysample) {
-          //  Toast.makeText(VacationList.this,"put in sample data", Toast.LENGTH_LONG).show();
-            Vacation vacation=new Vacation(0, "Camping vacation", 100.0);
+        if(item.getItemId()==R.id.mysampleme) {
+            //Toast.makeText(VacationList.this,"put in sample data", Toast.LENGTH_LONG).show();
+            Vacation vacation=new Vacation(0, "Paris", 900.0, "UK Inn","12/23/24", "12/28/24");
             repository.insert(vacation);
-            vacation = new Vacation(0,"London", 600.0);
+            vacation = new Vacation(0,"London", 800.0,"Victoria Hotel","12/23/24", "12/28/24");
             repository.insert(vacation);
-            BreakIterator editDate = null;
-            Excursion excursion = new Excursion(0, "Snorkeling", 200.0, 1, editDate.getText().toString());
+            Excursion excursion = new Excursion(0, "JetSki Adventure", 200.0, 1, "12/23/24");
             repository.insert(excursion);
-            excursion = new Excursion(0, "Boat Tour", 400.0, 1, editDate.getText().toString());
+            excursion = new Excursion(0, "UTV Tour", 300.0, 1, "12/23/24");
             repository.insert(excursion);
             return true;
         }

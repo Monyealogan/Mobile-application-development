@@ -19,6 +19,9 @@ public class ExcursionAdapter extends RecyclerView.Adapter<ExcursionAdapter.Excu
     private List<Excursion> mExcursions;
     private final Context context;
     private final LayoutInflater mInflater;
+    private String startVacationDate;
+    private String endVacationDate;
+
 
     class ExcursionViewHolder extends RecyclerView.ViewHolder {
         private final TextView excursionItemView;
@@ -28,6 +31,7 @@ public class ExcursionAdapter extends RecyclerView.Adapter<ExcursionAdapter.Excu
             super(itemView);
             excursionItemView = itemView.findViewById(R.id.textView3);
             excursionItemView2 = itemView.findViewById(R.id.textView4);
+
             itemView.setOnClickListener(new View.OnClickListener() {
 
                 @Override
@@ -38,23 +42,27 @@ public class ExcursionAdapter extends RecyclerView.Adapter<ExcursionAdapter.Excu
                     intent.putExtra("id", current.getExcursionID());
                     intent.putExtra("name", current.getExcursionName());
                     intent.putExtra("price", current.getPrice());
-                    intent.putExtra("vacID", current.getVacationID());
+                    intent.putExtra("vacaID", current.getVacationID());
+                    intent.putExtra("excursionDate", current.getExcursionDate());
+                    intent.putExtra("startVacationDate", startVacationDate);
+                    intent.putExtra("endVacationDate", endVacationDate);
                     context.startActivity(intent);
                 }
             });
         }
     }
-
-    public ExcursionAdapter(Context context) {
-        mInflater = LayoutInflater.from(context);
+    public ExcursionAdapter(Context context, String startVacationDate, String endVacationDate) {
+        mInflater= LayoutInflater.from(context);
         this.context = context;
+        this.startVacationDate = startVacationDate;
+        this.endVacationDate = endVacationDate;
     }
 
 
     @NonNull
     @Override
     public ExcursionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = mInflater.inflate(R.layout.excursion_list_item, parent, false);
+        View itemView=mInflater.inflate(R.layout.excursion_list_item,parent,false);
         return new ExcursionViewHolder(itemView);
     }
 
@@ -73,13 +81,13 @@ public class ExcursionAdapter extends RecyclerView.Adapter<ExcursionAdapter.Excu
     }
 
     public void setExcursions(List<Excursion> excursions) {
-        mExcursions = excursions;
+        mExcursions=excursions;
         notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
-        if (mExcursions != null) return mExcursions.size();
+        if(mExcursions!=null) return mExcursions.size();
         else return 0;
     }
 }
