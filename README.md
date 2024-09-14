@@ -1,28 +1,46 @@
-<strong> **DO NOT DISTRIBUTE OR PUBLICLY POST SOLUTIONS TO THESE LABS. MAKE ALL FORKS OF THIS REPOSITORY WITH SOLUTION CODE PRIVATE. PLEASE REFER TO THE STUDENT CODE OF CONDUCT AND ETHICAL EXPECTATIONS FOR COLLEGE OF INFORMATION TECHNOLOGY STUDENTS FOR SPECIFICS. ** </strong>
+# QUIKBOOK Vacations
 
-# WESTERN GOVERNORS UNIVERSITY 
-## D308 – MOBILE APPLICATION DEVELOPMENT (ANDROID)
-Welcome to Mobile Application Development (Android)! This is an opportunity for students to create page layouts with clean navigation, design mobile application infrastructure and user interfaces, develop secure database-backed mobile applications in an object-oriented language, document solutions for application requirements with storyboards and emulators, articulate challenges in the development process, and describe alternatives methods in overcoming mobile application development problems. 
+**Purpose**  
+QUIKBOOK Vacations is your ultimate travel companion for planning and managing your vacations on the go. Designed for Android 8.0 and higher, this app leverages the Room Framework to handle all your vacation and excursion details seamlessly. Whether you're dreaming of a beach getaway or planning a city adventure, QUIKBOOK Vacations helps you keep everything organized and accessible right from your mobile device.
 
-FOR SPECIFIC TASK INSTRUCTIONS AND REQUIREMENTS FOR THIS ASSESSMENT, PLEASE REFER TO THE COURSE PAGE.
-## BASIC INSTRUCTIONS
-For this assessment, you have an opportunity to test your competency as a mobile application developer. Your understanding of mobile application structure and design will help you to develop applications to meet customer requirements. This task will allow you to demonstrate your ability to apply the skills learned in the course.
+**Features**  
+QUIKBOOK Vacations offers the following features to make your vacation planning simple and enjoyable:
 
-## SUPPLEMENTAL RESOURCES 
-1.	How to clone a project to Android Studio using Git?
+### Manage Vacations
+- **Add, Update, and Delete Vacations:** Easily manage your vacation plans. Add new vacations, update existing ones, or delete them when plans change.
+- **Vacation Details:** Store and view crucial details including the title, accommodation, start date, and end date.
+- **Validation Checks:** Ensure input dates are correctly formatted and that the end date is after the start date.
+- **Alerts:** Set alerts for start and end dates to remind you of your upcoming vacation.
+- **Sharing:** Share your vacation details via email, clipboard, or SMS with just a few taps.
+- **Excursions:** View and manage a list of excursions associated with each vacation.
 
-> Ensure that Android Studio and Git are installed on your system.  New Project, Get from VCS button or the File/New/Project from Version Control. This will open a window  with a prompt to clone the project. Save it in a safe location for the directory and press clone. IntelliJ will prompt you for your credentials. Enter in your WGU Credentials and the project will be cloned onto your local machine.
+### Manage Excursions
+- **Add, Update, and Delete Excursions:** Keep track of all your planned activities. Add new excursions, update them, or remove them as needed.
+- **Excursion Details:** Record and view details including the title and date of each excursion.
+- **Validation Checks:** Ensure excursion dates are formatted correctly and fall within the associated vacation period.
+- **Alerts:** Set alerts for excursion dates to remind you of each activity.
 
-2. How to create a branch and start Development?
+**How to Use**
+1. **Launch the App:** Open QUIKBOOK Vacations on your Android device.
+2. **Create a Vacation:** Enter details for your vacation such as the title, accommodation, and dates.
+3. **Add Excursions:** Within each vacation, add excursions you plan to enjoy.
+4. **Manage Your Plans:** Use the app to view, update, or delete vacations and excursions as needed.
+5. **Set Alerts and Share:** Set reminders for important dates and share your plans with friends and family.
 
-- GitLab method
-> Press the '+' button located near your branch name. In the dropdown list, press the 'New branch' button. This will allow you to create a name for your branch. Once the branch has been named, you can select 'Create Branch' to push the branch to your repository.
+**Compatibility**  
+- **Android Version:** The signed APK is compatible with Android 8.0 (Oreo) and higher.
 
-- Android Studio method
-> In Android Studio, Go to the 'Git' button on the top toolbar. Select the new branch option and create a name for the branch. Make sure checkout branch is selected and press create. You can now add a commit message and push the new branch to the local repo.
+**Git Repository**  
+Explore the source code and contribute to the project on GitLab:  
+[QUIKBOOK Vacations Repository](https://gitlab.com/wgu-gitlab-environment/student-repos/mlog113/d308-mobile-application-development-android/-/tree/working?ref_type=heads)
 
-## SUPPORT
-If you need additional support, please navigate to the course page and reach out to your course instructor.
-## FUTURE USE
-Take this opportunity to create or add to a simple resume portfolio to highlight and showcase your work for future use in career search, experience, and education!
+**Libraries and Plugins**
+- **Android Gradle Plugin:** 8.6.0
+- **JUnit:** 4.13.2
+- **Espresso Core:** 3.5.1
+- **AppCompat:** 1.6.1
+- **Material Design:** 1.10.0
+- **Activity:** 1.8.0
+- **ConstraintLayout:** 2.1.4
 
+Enjoy planning your next adventure with QUIKBOOK Vacations!
