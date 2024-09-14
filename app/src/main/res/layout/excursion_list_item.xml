@@ -42,5 +42,10 @@
         app:layout_constraintWidth_default="wrap"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="16dp" />
+    <Button
+        android:id="@+id/buttonDeleteExcursion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
