@@ -56,4 +56,7 @@ public class Excursion {
         return excursionDate;
     }
 
+    public String getName() {
+        return excursionName;
+    }
 }

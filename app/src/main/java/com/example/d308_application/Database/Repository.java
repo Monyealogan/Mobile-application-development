@@ -18,17 +18,17 @@ public class Repository {
     private List<Vacation> mAllVacations;
     private List<Excursion> mAllExcursions;
 
-    private static int NUMBER_OF_THREADS=4;
-    static final ExecutorService databaseExecutor= Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+    private static int NUMBER_OF_THREADS = 4;
+    static final ExecutorService databaseExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-    public Repository(Application application){
-        VacationDatabaseBuilder db=VacationDatabaseBuilder.getDatabase(application);
+    public Repository(Application application) {
+        VacationDatabaseBuilder db = VacationDatabaseBuilder.getDatabase(application);
         mExcursionDAO=db.excursionDAO();
         mVacationDAO= db.vacationDAO();
     }
 
-    public List<Vacation> getAllVacations(){
-        databaseExecutor.execute(()->{
+    public List<Vacation> getAllVacations() {
+        databaseExecutor.execute(() -> {
             mAllVacations=mVacationDAO.getAllVacations();
         });
 
@@ -40,8 +40,8 @@ public class Repository {
         return mAllVacations;
     }
 
-    public void insert(Vacation vacation){
-        databaseExecutor.execute(()-> {
+    public void insert(Vacation vacation) {
+        databaseExecutor.execute(() -> {
             mVacationDAO.insert(vacation);
         });
         try {
@@ -50,8 +50,8 @@ public class Repository {
             e.printStackTrace();
         }
     }
-    public void update(Vacation vacation){
-        databaseExecutor.execute(()-> {
+    public void update(Vacation vacation) {
+        databaseExecutor.execute(() -> {
             mVacationDAO.update(vacation);
         });
         try {
@@ -60,8 +60,8 @@ public class Repository {
             e.printStackTrace();
         }
     }
-    public void delete(Vacation vacation){
-        databaseExecutor.execute(()-> {
+    public void delete(Vacation vacation) {
+        databaseExecutor.execute(() -> {
             mVacationDAO.delete(vacation);
         });
         try {
@@ -72,15 +72,16 @@ public class Repository {
     }
 
     public List<Excursion>getAllExcursions(){
-        databaseExecutor.execute(()->{
-            mAllExcursions=mExcursionDAO.getAllExcursions();
-        });
+    databaseExecutor.execute(()->{
+      mAllExcursions=mExcursionDAO.getAllExcursions();
+    });
 
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+       try {
+         Thread.sleep(1000);
+       } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
         return mAllExcursions;
     }
 

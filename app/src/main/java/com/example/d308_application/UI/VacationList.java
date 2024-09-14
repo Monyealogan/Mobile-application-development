@@ -71,7 +71,7 @@ public class VacationList extends AppCompatActivity {
             repository.insert(vacation);
             Excursion excursion = new Excursion(0, "JetSki Adventure", 200.0, 1, "12/23/24");
             repository.insert(excursion);
-            excursion = new Excursion(0, "UTV Tour", 300.0, 1, "12/23/24");
+            excursion = new Excursion(0, "UTV Tour", 300.0, 2, "12/23/24");
             repository.insert(excursion);
             return true;
         }

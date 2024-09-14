@@ -28,19 +28,19 @@ public class MyReceiver extends BroadcastReceiver {
         Notification n = new NotificationCompat.Builder(context, channel_id)
                 .setSmallIcon(R.drawable.ic_launcher_foreground)
                 .setContentText(intent.getStringExtra("key"))
-                .setContentTitle("Excursion Title").build();
+                .setContentTitle("NotificationTest").build();
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
         notificationManager.notify(notificationID++, n);
     }
 
     private void createNotificationChannel(Context context, String CHANNEL_ID) {
-        CharSequence name = context.getResources().getString(R.string.channel_name);
-        String description = context.getString(R.string.channel_description);
+        CharSequence name = "mychannelname";
+        String description = "mychanneldescription";
         int importance = NotificationManager.IMPORTANCE_DEFAULT;
         NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
         channel.setDescription(description);
 
-        NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
+         NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
         notificationManager.createNotificationChannel(channel);
     }
 }
