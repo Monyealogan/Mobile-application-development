@@ -1,15 +1,18 @@
 package com.example.d308_application.UI;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.d308_application.Database.Repository;
 import com.example.d308_application.R;
 import com.example.d308_application.entities.Excursion;
 
@@ -31,6 +34,24 @@ public class ExcursionAdapter extends RecyclerView.Adapter<ExcursionAdapter.Excu
             super(itemView);
             excursionItemView = itemView.findViewById(R.id.textView3);
             excursionItemView2 = itemView.findViewById(R.id.textView4);
+
+
+
+            Button deleteButton = itemView.findViewById(R.id.buttonDeleteExcursion);
+            deleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    Excursion excursionToDelete = mExcursions.get(position);
+
+                    // Call deleteExcursion on the adapter
+                    ExcursionAdapter.this.deleteExcursion(position);
+
+                    // Delete from database using your repository
+                    Repository repository = new Repository((Application) context.getApplicationContext()); // Initialize repository
+                    repository.delete(excursionToDelete);
+                }
+            });
 
             itemView.setOnClickListener(new View.OnClickListener() {
 
@@ -77,6 +98,12 @@ public class ExcursionAdapter extends RecyclerView.Adapter<ExcursionAdapter.Excu
         } else {
             holder.excursionItemView.setText("No excursion name");
             holder.excursionItemView.setText("No vacation id");
+        }
+    }
+    public void deleteExcursion(int position) {
+        if (mExcursions != null && position >= 0 && position < mExcursions.size()) {
+            mExcursions.remove(position);
+            notifyItemRemoved(position);
         }
     }
 
