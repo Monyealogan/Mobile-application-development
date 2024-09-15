@@ -317,9 +317,9 @@ public class VacationDetails extends AppCompatActivity {
             try {
                 AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
-                scheduleAlarm(alarmManager, myStartDate.getTime(), "Vacation Start: " + myStartDate,  notificationID++);
+                scheduleAlarm(alarmManager, myStartDate.getTime(), "Vacation Start: " + myStartDate + " in " + name,  notificationID++);
 
-                scheduleAlarm(alarmManager, myEndDate.getTime(), "Vacation End: " + myEndDate, notificationID++);
+                scheduleAlarm(alarmManager, myEndDate.getTime(), "Vacation End: " + myEndDate +" in " + name, notificationID++);
 
 
 
