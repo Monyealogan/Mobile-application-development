@@ -228,7 +228,7 @@ public class ExcursionDetails extends AppCompatActivity {
                 Long trigger = myDate.getTime();
                 Intent intent = new Intent(ExcursionDetails.this, MyReceiver.class);
                 intent.putExtra("key", "Excursion Title: " + getIntent().getStringExtra("name"));
-                PendingIntent sender = PendingIntent.getBroadcast(ExcursionDetails.this, ++MainActivity.numAlert, intent, PendingIntent.FLAG_IMMUTABLE);
+                PendingIntent sender = PendingIntent.getBroadcast(ExcursionDetails.this, ++MainActivity.numAlert, intent, PendingIntent.FLAG_ONE_SHOT | PendingIntent.FLAG_IMMUTABLE);
                 AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                 alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);}
             catch (Exception e){

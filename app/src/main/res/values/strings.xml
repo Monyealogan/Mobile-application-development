@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">D308-Application</string>
-    <string name="channel_name">mychannelname</string>
-    <string name="channel_description">mychanneldescription</string>
-    <string name="channel_name2">mychannelname2</string>
-    <string name="channel_description2">mychanneldescription2</string>
+    <string name="channel_name">test</string>
+    <string name="channel_description">testChannel</string>
 </resources>

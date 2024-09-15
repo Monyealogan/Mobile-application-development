@@ -17,7 +17,6 @@ import com.example.d308_application.R;
 public class MyVacationReceiver extends BroadcastReceiver {
     String channel_id = "test";
 
-
     @Override
     public void onReceive(Context context, Intent intent) {
         // TODO: This method is called when the BroadcastReceiver is receiving
@@ -36,8 +35,8 @@ public class MyVacationReceiver extends BroadcastReceiver {
     }
 
     private void createNotificationChannel(Context context, String CHANNEL_ID) {
-        CharSequence name = context.getResources().getString(R.string.channel_name2);
-        String description = context.getString(R.string.channel_description2);
+        CharSequence name = context.getResources().getString(R.string.channel_name);
+        String description = context.getString(R.string.channel_description);
         int importance = NotificationManager.IMPORTANCE_DEFAULT;
         NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
         channel.setDescription(description);

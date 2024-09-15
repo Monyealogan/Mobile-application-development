@@ -34,7 +34,8 @@ public class VacationAdapter extends RecyclerView.Adapter<VacationAdapter.Vacati
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    int position=getAdapterPosition();
+                    RecyclerView.ViewHolder viewHolder;
+                    int position=getBindingAdapterPosition();
                     final Vacation current=mVacations.get(position);
                     Intent intent = new Intent(context, VacationDetails.class);
                     intent.putExtra("id", current.getVacationID());

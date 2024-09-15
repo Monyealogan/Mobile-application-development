@@ -200,7 +200,7 @@ public class VacationDetails extends AppCompatActivity {
         Intent intent = new Intent(VacationDetails.this, MyVacationReceiver.class);
         intent.putExtra("key", message);
         intent.putExtra("notification_id", notificationId);
-        PendingIntent sender = PendingIntent.getBroadcast(VacationDetails.this, notificationId, intent, PendingIntent.FLAG_IMMUTABLE);
+        PendingIntent sender = PendingIntent.getBroadcast(VacationDetails.this, notificationId, intent,PendingIntent.FLAG_ONE_SHOT | PendingIntent.FLAG_IMMUTABLE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, triggerTime, sender);
     }
 
@@ -253,13 +253,13 @@ public class VacationDetails extends AppCompatActivity {
                 if (repository.getAllExcursions().size() == 0) excursionID = 1;
                 else
                     excursionID = repository.getAllExcursions().get(repository.getAllExcursions().size() - 1).getExcursionID() + 1;
-                Excursion excursion = new Excursion(excursionID, "Snorkeling", 80, vacationID, "11/01/24");
+                Excursion excursion = new Excursion(excursionID, "Snorkeling", 80, vacationID, "9/14/24");
                 repository.insert(excursion);
-                excursion = new Excursion(++excursionID, "JetSki Adventure", 150, vacationID, "11/01/24");
+                excursion = new Excursion(++excursionID, "JetSki Adventure", 150, vacationID, "9/14/24");
                 repository.insert(excursion);
-                excursion = new Excursion(++excursionID, "Boat Tour", 75, vacationID, "11/01/24");
+                excursion = new Excursion(++excursionID, "Boat Tour", 75, vacationID, "9/14/24");
                 repository.insert(excursion);
-                excursion = new Excursion(++excursionID, "ATV Tour", 200, vacationID, "11/01/24");
+                excursion = new Excursion(++excursionID, "ATV Tour", 200, vacationID, "9/14/24");
                 repository.insert(excursion);
                 RecyclerView recyclerView = findViewById(R.id.excursionrecyclerview);
                 final ExcursionAdapter excursionAdapter = new ExcursionAdapter(this, startVacationDate, endVacationDate);
@@ -317,9 +317,9 @@ public class VacationDetails extends AppCompatActivity {
             try {
                 AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
-                scheduleAlarm(alarmManager, myStartDate.getTime(), "Vacation Start: " + name,  notificationID++);
+                scheduleAlarm(alarmManager, myStartDate.getTime(), "Vacation Start: " + myStartDate,  notificationID++);
 
-                scheduleAlarm(alarmManager, myEndDate.getTime(), "Vacation End: " + name, notificationID++);
+                scheduleAlarm(alarmManager, myEndDate.getTime(), "Vacation End: " + myEndDate, notificationID++);
 
 
 

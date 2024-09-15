@@ -41,7 +41,7 @@ public class ExcursionAdapter extends RecyclerView.Adapter<ExcursionAdapter.Excu
             deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int position = getAdapterPosition();
+                    int position=getBindingAdapterPosition();
                     Excursion excursionToDelete = mExcursions.get(position);
 
                     // Call deleteExcursion on the adapter
@@ -57,7 +57,7 @@ public class ExcursionAdapter extends RecyclerView.Adapter<ExcursionAdapter.Excu
 
                 @Override
                 public void onClick(View view) {
-                    int position = getAdapterPosition();
+                    int position=getBindingAdapterPosition();
                     final Excursion current = mExcursions.get(position);
                     Intent intent = new Intent(context, ExcursionDetails.class);
                     intent.putExtra("id", current.getExcursionID());
