@@ -11,6 +11,7 @@ public class Excursion {
     private double price;
     private int vacationID;
     private String excursionDate;
+    private String note;
 
     public Excursion(int excursionID, String excursionName, double price, int vacationID, String excursionDate) {
         this.excursionID = excursionID;
@@ -59,4 +60,7 @@ public class Excursion {
     public String getName() {
         return excursionName;
     }
+    public String getNote() { return note; }
+
+    public void setNote(String note) { this.note = note; }
 }

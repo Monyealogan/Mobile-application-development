@@ -239,6 +239,34 @@ public class ExcursionDetails extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+
+        Excursion excursion = repository.getExcursionById(excursionID);
+
+        if (excursion != null) {
+            // Update the note in the excursion
+            excursion.setNote(editNote.getText().toString());
+
+            // Update the excursion in the repository
+            repository.update(excursion);
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // Get the excursion from the repository
+        Excursion excursion = repository.getExcursionById(excursionID);
+
+        if (excursion != null) {
+            // Set the saved note to editNote
+            editNote.setText(excursion.getNote());
+        }
+    }
 
 }
 

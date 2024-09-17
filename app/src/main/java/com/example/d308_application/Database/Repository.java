@@ -127,4 +127,17 @@ public class Repository {
             e.printStackTrace();
         }
     }
+    public Excursion getExcursionById(int excursionID) {
+        final Excursion[] excursion = new Excursion[1];
+        databaseExecutor.execute(() -> {
+            excursion[0] = mExcursionDAO.getExcursionById(excursionID);
+        });
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return excursion[0];
+    }
 }
