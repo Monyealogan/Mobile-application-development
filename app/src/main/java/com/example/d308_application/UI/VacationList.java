@@ -5,10 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import java.time.Instant;
-import java.util.Date;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,7 +16,6 @@ import com.example.d308_application.entities.Excursion;
 import com.example.d308_application.entities.Vacation;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.text.BreakIterator;
 import java.util.List;
 
 public class VacationList extends AppCompatActivity {
