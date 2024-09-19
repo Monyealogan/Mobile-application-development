@@ -1,5 +1,6 @@
 package com.example.d308_application.UI;
 
+import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -188,8 +189,9 @@ public class ExcursionDetails extends AppCompatActivity {
             this.finish();
             return true;}
 
-        if (item.getItemId()== R.id.excursionsave){
+        if (item.getItemId() == R.id.excursionsave) {
             Excursion excursion;
+            Intent resultIntent = new Intent();
             if (excursionID == -1) {
                 if (repository.getAllExcursions().size() == 0)
                     excursionID = 1;
@@ -197,13 +199,27 @@ public class ExcursionDetails extends AppCompatActivity {
                     excursionID = repository.getAllExcursions().get(repository.getAllExcursions().size() - 1).getExcursionID() + 1;
                 excursion = new Excursion(excursionID, editName.getText().toString(), Double.parseDouble(editPrice.getText().toString()), vacaID, editDate.getText().toString());
                 repository.insert(excursion);
-                this.finish();
             } else {
                 excursion = new Excursion(excursionID, editName.getText().toString(), Double.parseDouble(editPrice.getText().toString()), vacaID, editDate.getText().toString());
                 repository.update(excursion);
-                this.finish();
             }
-            return true;}
+
+            //Updated info
+            resultIntent.putExtra("updatedExcursionID", excursionID);
+            resultIntent.putExtra("updatedExcursionName", editName.getText().toString());
+            resultIntent.putExtra("updatedExcursionPrice", Double.parseDouble(editPrice.getText().toString()));
+            resultIntent.putExtra("updatedExcursionDate", editDate.getText().toString());
+            setResult(RESULT_OK, resultIntent);
+
+            // Return to homepage
+            Intent intent = new Intent(ExcursionDetails.this, VacationList.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra("excursionSavedMessage", "Your excursion has been saved.");
+            startActivity(intent);
+
+            this.finish();
+        }
+
         if (item.getItemId()== R.id.share) {
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
@@ -239,6 +255,7 @@ public class ExcursionDetails extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -247,26 +264,27 @@ public class ExcursionDetails extends AppCompatActivity {
         Excursion excursion = repository.getExcursionById(excursionID);
 
         if (excursion != null) {
-            // Update the note in the excursion
+
             excursion.setNote(editNote.getText().toString());
 
-            // Update the excursion in the repository
             repository.update(excursion);
         }
     }
-
     @Override
     protected void onResume() {
         super.onResume();
-
-        // Get the excursion from the repository
         Excursion excursion = repository.getExcursionById(excursionID);
 
         if (excursion != null) {
-            // Set the saved note to editNote
+            editName.setText(excursion.getExcursionName());
+            editPrice.setText(String.valueOf(excursion.getPrice()));
+            editDate.setText(excursion.getExcursionDate());
             editNote.setText(excursion.getNote());
         }
     }
 
+
 }
+
+
 

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,6 +26,14 @@ public class VacationList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vacation_list);
         FloatingActionButton fab=findViewById(R.id.floatingActionButton2);
+
+        Intent intent = getIntent();
+        if (intent.hasExtra("excursionSavedMessage")) {
+            String message = intent.getStringExtra("excursionSavedMessage");
+            if (message != null) {
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+            }
+        }
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
