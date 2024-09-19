@@ -72,16 +72,16 @@ public class Repository {
     }
 
     public List<Excursion>getAllExcursions(){
-    databaseExecutor.execute(()->{
-      mAllExcursions=mExcursionDAO.getAllExcursions();
-    });
+        databaseExecutor.execute(()->{
+            mAllExcursions=mExcursionDAO.getAllExcursions();
+        });
 
 
-       try {
-         Thread.sleep(1000);
-       } catch (InterruptedException e) {
-        e.printStackTrace();
-    }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return mAllExcursions;
     }
 
